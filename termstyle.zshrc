@@ -42,8 +42,8 @@ display_terminal_info() {
     # Git status if in git repo
     if git rev-parse --git-dir > /dev/null 2>&1; then
         local branch=$(git branch --show-current 2>/dev/null)
-        local status=$(git status --porcelain 2>/dev/null)
-        if [[ -n "$status" ]]; then
+        local git_stat=$(git status --porcelain 2>/dev/null)
+        if [[ -n "$git_stat" ]]; then
             echo "${fg[green]}║ Git Branch:${reset_color}     ${fg[red]}$branch (dirty)${reset_color}"
         else
             echo "${fg[green]}║ Git Branch:${reset_color}     ${fg[green]}$branch (clean)${reset_color}"
